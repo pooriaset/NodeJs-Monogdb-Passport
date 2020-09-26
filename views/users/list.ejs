@@ -1,0 +1,55 @@
+
+
+        <%- include('../../components/errorsValidator.ejs') -%>
+
+        <div class="table-responsive">
+            <table class="table table-light table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">username</th>
+                        <th scope="col">Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user=>{ %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><img alt="image" height="64" src="/images/users/<%= user.image %> " </td>
+                        <td><%= user.username %></td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                </form>
+                                <a href="/users/<%= user.id %>" class="btn btn-sm btn-info">
+                                    View
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="">
+            <h4>
+                Add New User
+            </h4>
+            <form action="/users/add" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="username" name="username" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="password" name="password" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" />
+                </div>
+            </form>
+
+        </div>

@@ -1,0 +1,17 @@
+<% if(errors.length){ %>
+<div class="alert alert-danger">
+    <ul>
+        <%  errors.forEach(error=>{ %>
+        <li><%= error %></li>
+        <%  }) %>
+    </ul>
+</div>
+<%
+        } 
+        else if(success.length){ %>
+<div class="alert alert-success">
+    <p>
+        <%= success %>
+    </p>
+</div>
+<% } %>
